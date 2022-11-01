@@ -13,17 +13,18 @@ A mobile website was not going to cut it.
 
 Our needs were simple this time. What will we do if we need more?
 
-* The Example App
-
+* Scalable Fault-Tolerant Distributed Soft-Real-Time Hello World
 Massively Multiplayer Online Incrementing Counter
-[[https://beam-counter.fly.dev]]
+[[https://beam-counter.fly.dev/]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][Code]]
 
-* LiveView for a PWA?
+We've built this app in several ways. The easiest way is a PWA.
 
-LiveView is not the best way to build a traditional PWA...
+* What's a PWA?
+** A set of tools to:
 
-... but PWA is the easiest way to get your LiveView app to behave like an "App app".
+- Enable your website to behave like an app
+- Telegraph to the client that it can treat your website like an app
 
 ** Anatomy of a PWA
 
@@ -40,6 +41,11 @@ No, but there are limitations:
 - Limited local storage
 - *No App Store*
 
+* Capacitor is NOT the way
+
+Just make a dummy native app that consists of a webview pointed at your app URL
+[source link]
+
 * WebView Wrapper
 
 PWA Builder
@@ -47,11 +53,6 @@ BubbleWrap
 
 Custom user agent string
 LiveView has built-in functionality to see this
-
-* Capacitor is NOT the way
-
-Just make a dummy native app that consists of a webview pointed at your app URL
-[source link]
 
 * LiveView Native
 
