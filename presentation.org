@@ -1,0 +1,100 @@
+#+title: One LiveView To Rule Them All: From Web To Mobile And Back Again
+
+* The Situation
+
+We were hired as apprentice developers to work on a highly-interactive LiveView app.
+If there is a website - app continuum, we are firmly on the app side.
+It is important to the client to  have an "App-like" experience, particularly on mobile devices.
+
+** What that means:
+It needs to work "like an App"
+It needs to be available on the app stores.
+A mobile website was not going to cut it.
+
+Our needs were simple this time. What will we do if we need more?
+
+* The Example App
+
+Massively Multiplayer Online Incrementing Counter
+[[https://beam-counter.fly.dev]]
+[[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][Code]]
+
+* LiveView for a PWA?
+
+LiveView is not the best way to build a traditional PWA...
+
+... but PWA is the easiest way to get your LiveView app to behave like an "App app".
+
+** Anatomy of a PWA
+
+- Service Worker
+- Hi-res icon
+- App Manifest
+
+* Aren't PWA's broken on iOS?
+
+No, but there are limitations:
+
+- No background media playback
+- No notifications (this may change in iOS 16)
+- Limited local storage
+- *No App Store*
+
+* WebView Wrapper
+
+PWA Builder
+BubbleWrap
+
+Custom user agent string
+LiveView has built-in functionality to see this
+
+* Capacitor is NOT the way
+
+Just make a dummy native app that consists of a webview pointed at your app URL
+[source link]
+
+* LiveView Native
+
+⚠️ New! Experimental! ⚠️
+
+Native Components, Orchestrated by LiveView
+
+[[file:~/code/beam_counter/lib/beam_counter_web/live/counter_native.ex][LiveView]]
+[[file:~/code/BeamCounterLVNative/BeamCounterLVNative/BigButton.swift][BigButton]]
+
+* LiveState
+
+⚠️⚠️ Newer! More experimental! ⚠️⚠️
+
+Make anything act like a LiveView
+
+Thin wrapper over Phoenix Channels
+Rather than rendering an HTML document and pushing DOM patches,
+LiveState renders a JSON object and pushes JSON patches.
+
+* JSONPatch
+
+The original document
+{
+  "baz": "qux",
+  "foo": "bar"
+}
+
+The patch
+[
+  { "op": "replace", "path": "/baz", "value": "boo" },
+  { "op": "add", "path": "/hello", "value": ["world"] },
+  { "op": "remove", "path": "/foo" }
+]
+
+The result
+{
+  "baz": "boo",
+  "hello": ["world"]
+}
+
+* How does it work?
+
+[[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
+[[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][LiveView]]
+[[file:~/code/beam-counter-react-native/App.js][React App]]
