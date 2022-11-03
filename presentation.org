@@ -10,15 +10,10 @@ andrew@launchscout.com
 * The Situation
 
 We were hired as apprentice developers to work on a highly-interactive LiveView app.
-If there is a website - app continuum, we are firmly on the app side.
-It is important to the client to  have an "App-like" experience, particularly on mobile devices.
 
-** What that means:
-It needs to work "like an App"
-It needs to be available on the app stores.
+It needed to work "like an App"
+
 A mobile website was not going to cut it.
-
-Our needs were simple this time. What will we do if we need more?
 
 * Scalable Fault-Tolerant Concurrent Soft-Real-Time Demo App
 
@@ -28,7 +23,6 @@ Massively Multiplayer Online Incrementing Counter
 [[https://beam-counter.fly.dev/]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][Code]]
 
-We've built this app in several ways. The easiest way is a PWA.
 
 * What's a PWA?
 ** A set of tools to:
@@ -101,7 +95,7 @@ Make /anything/ work like LiveView
 * What does it look like?
 [[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][LiveView]]
-[[file:~/code/beam-counter-react-native/App.js][React App]]
+[[file:~/code/beam-counter-react-native/App.js][React Native]]
 
 * Thank you!
 
