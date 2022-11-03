@@ -75,6 +75,7 @@ Make /anything/ work like LiveView
 - Render HTML
 - Listen for events
 - Push DOM patch on state change
+- Client Does The Right Thing™️
 
 * How LiveState works
 - Initialize stateful server-side process
@@ -82,6 +83,7 @@ Make /anything/ work like LiveView
 - Render +HTML+ *JSON*
 - Listen for events
 - Push +DOM+ *JSON* patch on state change
+- Client Does The Right Thing™️
 
 * JSONPatch
 #+BEGIN_SRC js +#
