@@ -93,8 +93,8 @@ Make /anything/ work like LiveView
 #+END_SRC+#
 
 * What does it look like?
-[[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][LiveView]]
+[[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
 [[file:~/code/beam-counter-react-native/App.js][React Native]]
 
 * Thank you!
