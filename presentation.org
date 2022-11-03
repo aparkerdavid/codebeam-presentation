@@ -1,5 +1,5 @@
 #+title: One LiveView To Rule Them All
-or: From Web To Mobile And Back Again
+ or: From Web To Mobile And Back Again
 
 Parker Rueve
 parker@launchscout.com
@@ -21,10 +21,11 @@ Massively Multiplayer Online Incrementing Counter
 #+ATTR_ORG: :width 400
 [[./beam-counter-qr.png]]
 [[https://beam-counter.fly.dev/]]
-[[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][Code]]
+[[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][counter.ex]]
 
 
 * What's a PWA?
+
 ** A set of tools to:
 
 - Enable your website to behave like an app
@@ -42,25 +43,29 @@ Massively Multiplayer Online Incrementing Counter
 - Limited local storage
 - No notifications (this may change in iOS 16)
 - *Not distributed in App Stores*
+* Is Capacitor the answer?
 
-* Capacitor?
-** NO
+* Is Capacitor the answer?
+#+ATTR_ORG: :width 800
+[[./no.png]]
 
 * WebView wrapper
 
-PWA Builder
-BubbleWrap
+Automatically generate with tools like:
+- PWA Builder
+- BubbleWrap
 
-[[file:~/launch-scout/addnaide-ios/addnaide/ContentView.swift][Swift Webview]]
+Or manually, it's not complicated:
+[[file:~/launch-scout/addnaide-ios/addnaide/ContentView.swift][ContentView.swift]]
 
-- Custom user agent string
+Pro tip: customize the user agent string
 
 * LiveView Native
 
 Native Components, Orchestrated by LiveView
 
-[[file:~/code/beam_counter/lib/beam_counter_web/live/counter_native.ex][LiveView]]
-[[file:~/code/BeamCounterLVNative/BeamCounterLVNative/BigButton.swift][BigButton]]
+[[file:~/code/beam_counter/lib/beam_counter_web/live/counter_native.ex][counter_native.ex]]
+[[file:~/code/BeamCounterLVNative/BeamCounterLVNative/BigButton.swift][BigButton.swift]]
 
 * LiveState
 
@@ -70,6 +75,7 @@ Make /anything/ work like LiveView
 
 
 * How LiveView works
+
 - Initialize stateful server-side process
 - Establish socket connection
 - Render HTML
@@ -78,6 +84,7 @@ Make /anything/ work like LiveView
 - Client Does The Right Thing™️
 
 * How LiveState works
+
 - Initialize stateful server-side process
 - Establish socket connection
 - Render +HTML+ *JSON*
@@ -86,6 +93,7 @@ Make /anything/ work like LiveView
 - Client Does The Right Thing™️
 
 * JSONPatch
+
 #+BEGIN_SRC js +#
 [
   { "op": "replace", "path": "/baz", "value": "boo" },
@@ -95,9 +103,10 @@ Make /anything/ work like LiveView
 #+END_SRC+#
 
 * What does it look like?
-[[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][LiveView]]
-[[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
-[[file:~/code/beam-counter-react-native/App.js][React Native]]
+
+LiveView: [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][counter.ex]]
+LiveState: [[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][counter_channel.ex]]
+React Native: [[file:~/code/beam-counter-react-native/App.js][App.js]]
 
 * Thank you!
 
