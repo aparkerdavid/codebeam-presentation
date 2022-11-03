@@ -1,4 +1,11 @@
-#+title: One LiveView To Rule Them All: From Web To Mobile And Back Again
+#+title: One LiveView To Rule Them All
+or: From Web To Mobile And Back Again
+
+Parker Rueve
+parker@launchscout.com
+
+Andrew Moore
+andrew@launchscout.com
 
 * The Situation
 
@@ -13,8 +20,11 @@ A mobile website was not going to cut it.
 
 Our needs were simple this time. What will we do if we need more?
 
-* Scalable Fault-Tolerant Distributed Soft-Real-Time Hello World
+* Scalable Fault-Tolerant Concurrent Soft-Real-Time Demo App
+
 Massively Multiplayer Online Incrementing Counter
+#+ATTR_ORG: :width 400
+[[./beam-counter-qr.png]]
 [[https://beam-counter.fly.dev/]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][Code]]
 
@@ -32,31 +42,26 @@ We've built this app in several ways. The easiest way is a PWA.
 - Hi-res icon
 - App Manifest
 
-* Aren't PWA's broken on iOS?
-
-No, but there are limitations:
+* Outgrowing your PWA
 
 - No background media playback
-- No notifications (this may change in iOS 16)
 - Limited local storage
-- *No App Store*
+- No notifications (this may change in iOS 16)
+- *Not distributed in App Stores*
 
-* Capacitor is NOT the way
+* Capacitor?
+** NO
 
-Just make a dummy native app that consists of a webview pointed at your app URL
-[source link]
-
-* WebView Wrapper
+* WebView wrapper
 
 PWA Builder
 BubbleWrap
 
-Custom user agent string
-LiveView has built-in functionality to see this
+[[file:~/launch-scout/addnaide-ios/addnaide/ContentView.swift][Swift Webview]]
+
+- Custom user agent string
 
 * LiveView Native
-
-⚠️ New! Experimental! ⚠️
 
 Native Components, Orchestrated by LiveView
 
@@ -65,37 +70,43 @@ Native Components, Orchestrated by LiveView
 
 * LiveState
 
-⚠️⚠️ Newer! More experimental! ⚠️⚠️
+⚠️️ New! Experimental! ⚠️️
 
-Make anything act like a LiveView
+Make /anything/ work like LiveView
 
-Thin wrapper over Phoenix Channels
-Rather than rendering an HTML document and pushing DOM patches,
-LiveState renders a JSON object and pushes JSON patches.
+
+* How LiveView works
+- Initialize stateful server-side process
+- Establish socket connection
+- Render HTML
+- Listen for events
+- Push DOM patch on state change
+
+* How LiveState works
+- Initialize stateful server-side process
+- Establish socket connection
+- Render +HTML+ *JSON*
+- Listen for events
+- Push +DOM+ *JSON* patch on state change
 
 * JSONPatch
-
-The original document
-{
-  "baz": "qux",
-  "foo": "bar"
-}
-
-The patch
+#+BEGIN_SRC js +#
 [
   { "op": "replace", "path": "/baz", "value": "boo" },
   { "op": "add", "path": "/hello", "value": ["world"] },
   { "op": "remove", "path": "/foo" }
 ]
+#+END_SRC+#
 
-The result
-{
-  "baz": "boo",
-  "hello": ["world"]
-}
-
-* How does it work?
-
+* What does it look like?
 [[file:~/code/beam_counter/lib/beam_counter_web/channels/counter_channel.ex][LiveState]]
 [[file:~/code/beam_counter/lib/beam_counter_web/live/counter.ex][LiveView]]
 [[file:~/code/beam-counter-react-native/App.js][React App]]
+
+* Thank you!
+
+Parker Rueve
+parker@launchscout.com
+
+Andrew Moore
+andrew@launchscout.com
